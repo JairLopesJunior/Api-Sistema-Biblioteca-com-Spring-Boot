@@ -1,5 +1,6 @@
 package io.github.jairlopesjunior.sistemabibliotecario.domain.entities;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
