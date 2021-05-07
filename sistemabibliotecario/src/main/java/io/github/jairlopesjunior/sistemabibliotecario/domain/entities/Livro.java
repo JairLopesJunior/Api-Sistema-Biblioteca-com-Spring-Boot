@@ -40,4 +40,8 @@ public class Livro {
     @Column(name = "status")
     @NotEmpty(message = "Campo status é obrigatório.")
     private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 }

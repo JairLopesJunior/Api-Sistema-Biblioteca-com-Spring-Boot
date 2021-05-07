@@ -10,6 +10,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Getter
 @Setter
@@ -35,4 +36,7 @@ public class Cliente {
     @Column(name = "email", length = 100)
     @Email(message = "Campo email é obrigatório.")
     private String email;
+
+    @OneToMany(mappedBy = "tb_cliente", fetch = FetchType.LAZY)
+    private List<Livro> livro;
 }
