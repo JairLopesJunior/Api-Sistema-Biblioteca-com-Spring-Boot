@@ -1,4 +1,4 @@
-package io.github.jairlopesjunior.sistemabibliotecario.domain.dtos;
+package io.github.jairlopesjunior.sistemabibliotecario.rest.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

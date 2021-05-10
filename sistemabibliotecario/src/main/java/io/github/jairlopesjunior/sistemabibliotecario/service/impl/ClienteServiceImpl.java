@@ -1,6 +1,6 @@
 package io.github.jairlopesjunior.sistemabibliotecario.service.impl;
 
-import io.github.jairlopesjunior.sistemabibliotecario.domain.dtos.ClienteDTO;
+import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.ClienteDTO;
 import io.github.jairlopesjunior.sistemabibliotecario.domain.entities.Cliente;
 import io.github.jairlopesjunior.sistemabibliotecario.domain.repositories.ClienteRepository;
 import io.github.jairlopesjunior.sistemabibliotecario.service.ClienteService;
@@ -20,6 +20,6 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setNome(clienteDTO.getNome());
         cliente.setCpf(clienteDTO.getCpf());
         cliente.setEmail(clienteDTO.getEmail());
-        clienteRepository.save(cliente);
+        return clienteRepository.save(cliente);
     }
 }

@@ -1,6 +1,7 @@
 package io.github.jairlopesjunior.sistemabibliotecario.domain.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,7 @@ import java.util.List;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
 
@@ -37,6 +38,7 @@ public class Cliente {
     @Email(message = "Campo email é obrigatório.")
     private String email;
 
-    @OneToMany(mappedBy = "tb_cliente", fetch = FetchType.LAZY)
-    private List<Livro> livro;
+    @JsonIgnore
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private List<Livro> livros;
 }
