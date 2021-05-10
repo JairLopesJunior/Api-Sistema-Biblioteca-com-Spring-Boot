@@ -1,18 +1,19 @@
 package io.github.jairlopesjunior.sistemabibliotecario.service.impl;
 
-import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.ClienteDTO;
 import io.github.jairlopesjunior.sistemabibliotecario.domain.entities.Cliente;
 import io.github.jairlopesjunior.sistemabibliotecario.domain.repositories.ClienteRepository;
+import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.ClienteDTO;
 import io.github.jairlopesjunior.sistemabibliotecario.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class ClienteServiceImpl implements ClienteService {
 
     private final ClienteRepository clienteRepository;
-
 
     @Override
     public Cliente save(ClienteDTO clienteDTO) {
@@ -22,4 +23,11 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setEmail(clienteDTO.getEmail());
         return clienteRepository.save(cliente);
     }
+
+    @Override
+    public Optional<Cliente> delete(Integer id) {
+        return clienteRepository.findById(id);
+    }
+
+
 }

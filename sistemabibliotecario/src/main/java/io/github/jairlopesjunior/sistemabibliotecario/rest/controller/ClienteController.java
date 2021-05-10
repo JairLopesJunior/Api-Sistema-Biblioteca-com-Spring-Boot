@@ -1,10 +1,11 @@
 package io.github.jairlopesjunior.sistemabibliotecario.rest.controller;
 
-import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.ClienteDTO;
 import io.github.jairlopesjunior.sistemabibliotecario.domain.entities.Cliente;
+import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.ClienteDTO;
 import io.github.jairlopesjunior.sistemabibliotecario.service.ClienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
@@ -22,5 +23,13 @@ public class ClienteController {
     @PostMapping
     public Cliente save(@RequestBody @Valid ClienteDTO cliente){
         return clienteService.save(cliente);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Integer id){
+        clienteService.delete(id).orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND
+                , "Cliente não encontrado."));
     }
 }
