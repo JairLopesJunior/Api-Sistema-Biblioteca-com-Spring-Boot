@@ -23,6 +23,6 @@ public class ClienteController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public Cliente save(@RequestBody @Valid ClienteDTO cliente){
-        
+        return clienteRepository.save(cliente);
     }
 }
