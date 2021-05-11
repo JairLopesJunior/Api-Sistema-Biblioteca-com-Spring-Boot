@@ -5,9 +5,9 @@ import io.github.jairlopesjunior.sistemabibliotecario.domain.repositories.Client
 import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.ClienteDTO;
 import io.github.jairlopesjunior.sistemabibliotecario.service.ClienteService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -25,8 +25,12 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Optional<Cliente> delete(Integer id) {
-        return clienteRepository.findById(id);
+    public void delete(Integer id) {
+        clienteRepository.findById(id)
+                .map(cliente -> {
+                    clienteRepository.delete(cliente);
+                    return cliente;
+                }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
     }
 
 

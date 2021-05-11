@@ -5,7 +5,6 @@ import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.ClienteDTO;
 import io.github.jairlopesjunior.sistemabibliotecario.service.ClienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
@@ -28,8 +27,7 @@ public class ClienteController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
     public void delete(@PathVariable Integer id){
-        clienteService.delete(id).orElseThrow(() -> new ResponseStatusException(
-                HttpStatus.NOT_FOUND
-                , "Cliente não encontrado."));
+        clienteService.delete(id);
     }
+
 }
