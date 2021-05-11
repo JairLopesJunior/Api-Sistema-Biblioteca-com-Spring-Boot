@@ -21,8 +21,10 @@ import java.util.List;
 @Table(name = "tb_cliente")
 public class Cliente {
 
+
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 

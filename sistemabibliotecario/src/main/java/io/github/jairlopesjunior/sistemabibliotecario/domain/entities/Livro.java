@@ -18,8 +18,9 @@ import java.time.LocalDate;
 @Table(name = "tb_livros")
 public class Livro {
 
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
