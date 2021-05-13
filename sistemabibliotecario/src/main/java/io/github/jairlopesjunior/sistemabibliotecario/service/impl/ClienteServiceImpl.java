@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ClienteServiceImpl implements ClienteService {
@@ -42,6 +44,11 @@ public class ClienteServiceImpl implements ClienteService {
                     clienteExistente.setCpf(clienteDTO.getCpf());
                     return clienteRepository.save(clienteExistente);
                 }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
+    }
+
+    @Override
+    public List<Cliente> findAll() {
+        return clienteRepository.findAll();
     }
 
 

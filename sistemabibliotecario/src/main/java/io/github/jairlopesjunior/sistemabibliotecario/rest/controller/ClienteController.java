@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientes")
@@ -34,6 +35,12 @@ public class ClienteController {
     @PutMapping("{id}")
     public void update(@PathVariable Integer id, @RequestBody @Valid ClienteDTO clienteDTO){
         clienteService.update(id, clienteDTO);
+    }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @GetMapping
+    public List<Cliente> getAll(){
+        return clienteService.findAll();
     }
 
 }
