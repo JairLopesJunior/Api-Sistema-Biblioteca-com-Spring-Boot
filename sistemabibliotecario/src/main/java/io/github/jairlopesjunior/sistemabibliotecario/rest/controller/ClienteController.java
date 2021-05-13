@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clientes")
@@ -46,7 +45,7 @@ public class ClienteController {
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @GetMapping("{id}")
-    public Optional<Cliente> getById(@PathVariable Integer id){
+    public Cliente getById(@PathVariable Integer id){
         return clienteService.findById(id);
     }
 }
