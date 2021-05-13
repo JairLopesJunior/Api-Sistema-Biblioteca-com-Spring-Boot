@@ -30,4 +30,10 @@ public class ClienteController {
         clienteService.delete(id);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("{id}")
+    public void update(@PathVariable Integer id, @RequestBody @Valid ClienteDTO clienteDTO){
+        clienteService.update(id, clienteDTO);
+    }
+
 }

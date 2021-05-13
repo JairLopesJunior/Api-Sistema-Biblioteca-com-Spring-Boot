@@ -33,5 +33,16 @@ public class ClienteServiceImpl implements ClienteService {
                 }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
     }
 
+    @Override
+    public void update(Integer id, ClienteDTO clienteDTO) {
+        clienteRepository.findById(id)
+                .map(clienteExistente -> {
+                    clienteExistente.setNome(clienteDTO.getNome());
+                    clienteExistente.setEmail(clienteDTO.getEmail());
+                    clienteExistente.setCpf(clienteDTO.getCpf());
+                    return clienteRepository.save(clienteExistente);
+                }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
+    }
+
 
 }

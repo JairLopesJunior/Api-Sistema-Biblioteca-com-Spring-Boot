@@ -8,4 +8,6 @@ public interface ClienteService {
     Cliente save(ClienteDTO clienteDTO);
 
     void delete(Integer id);
+
+    void update(Integer id, ClienteDTO clienteDTO);
 }
