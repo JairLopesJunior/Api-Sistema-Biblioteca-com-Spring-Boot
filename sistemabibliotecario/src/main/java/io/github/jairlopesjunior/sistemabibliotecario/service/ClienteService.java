@@ -4,6 +4,7 @@ import io.github.jairlopesjunior.sistemabibliotecario.domain.entities.Cliente;
 import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.ClienteDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClienteService {
 
@@ -14,4 +15,6 @@ public interface ClienteService {
     void update(Integer id, ClienteDTO clienteDTO);
 
     List<Cliente> findAll();
+
+    Optional<Cliente> findById(Integer id);
 }

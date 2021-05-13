@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -49,6 +50,11 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public List<Cliente> findAll() {
         return clienteRepository.findAll();
+    }
+
+    @Override
+    public Optional<Cliente> findById(Integer id) {
+        return clienteRepository.findById(id);
     }
 
 
