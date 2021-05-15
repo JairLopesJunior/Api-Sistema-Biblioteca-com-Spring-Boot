@@ -1,9 +1,7 @@
 package io.github.jairlopesjunior.sistemabibliotecario.domain.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import io.github.jairlopesjunior.sistemabibliotecario.domain.enums.StatusPedido;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,6 +10,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "livro")
 public class Livro {
@@ -39,8 +38,9 @@ public class Livro {
     @Column(name = "pagina")
     private Integer pagina;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private String status;
+    private StatusPedido status;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
