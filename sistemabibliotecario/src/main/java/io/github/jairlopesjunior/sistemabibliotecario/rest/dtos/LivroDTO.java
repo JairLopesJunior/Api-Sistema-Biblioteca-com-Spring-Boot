@@ -1,14 +1,11 @@
 package io.github.jairlopesjunior.sistemabibliotecario.rest.dtos;
 
-import io.github.jairlopesjunior.sistemabibliotecario.domain.enums.StatusPedido;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -19,31 +16,27 @@ import javax.validation.constraints.NotNull;
 public class LivroDTO {
 
     @NotNull(message = "Campo id do Cliente é obrigatorio.")
-    @ApiModelProperty(position = 0)
+    @ApiModelProperty(name = "Id do Cliente", position = 0, example = "0, 1, 2, 3 ...")
     private Integer idCliente;
 
     @NotEmpty(message = "Campo nome do livro é obrigatório.")
-    @ApiModelProperty(position = 1)
+    @ApiModelProperty(name = "as", position = 1, example = "Código Limpo, Java Como Programar ...")
     private String nomeLivro;
 
     @NotEmpty(message = "Campo autor é obrigatório.")
-    @ApiModelProperty(position = 2)
+    @ApiModelProperty(name = "as", position = 2, example = "Fulano, Cicrano, Beltrano ...")
     private String autor;
 
     @NotEmpty(message = "Campo gênero é obrigatório.")
-    @ApiModelProperty(position = 3)
+    @ApiModelProperty(name = "as", position = 3, example = "Romance, Drama ...")
     private String genero;
 
     @NotEmpty(message = "Campo editora é obrigatório.")
-    @ApiModelProperty(position = 4)
+    @ApiModelProperty(name = "as", position = 4, example = "Companhia da Letras, Aleph ...")
     private String editora;
 
     @NotNull(message = "Campo página é obrigatório.")
-    @ApiModelProperty(position = 5)
+    @ApiModelProperty(name = "as", position = 5, example = "100, 101, 102 ...")
     private Integer pagina;
-
-    @Enumerated(EnumType.STRING)
-    @ApiModelProperty(position = 6)
-    private StatusPedido status;
 
 }
