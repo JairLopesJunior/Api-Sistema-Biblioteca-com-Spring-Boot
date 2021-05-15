@@ -1,11 +1,12 @@
 package io.github.jairlopesjunior.sistemabibliotecario.rest.dtos;
 
-import io.github.jairlopesjunior.sistemabibliotecario.domain.entities.Cliente;
 import io.github.jairlopesjunior.sistemabibliotecario.domain.enums.StatusPedido;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -13,6 +14,9 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LivroDTO {
+
+    @NotNull(message = "Campo id do Cliente é obrigatorio.")
+    private Integer idCliente;
 
     @NotEmpty(message = "Campo nome do livro é obrigatório.")
     private String nomeLivro;
@@ -29,8 +33,7 @@ public class LivroDTO {
     @NotNull(message = "Campo pagina é obrigatório.")
     private Integer pagina;
 
-    @NotEmpty(message = "Campo status é obrigatório.")
+    @Enumerated(EnumType.STRING)
     private StatusPedido status;
 
-    private Cliente cliente;
 }
