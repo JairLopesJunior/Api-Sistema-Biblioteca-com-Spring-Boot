@@ -24,6 +24,9 @@ public class LivroController {
         return livroService.save(livroDTO);
     }
 
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Integer id){
+        livroService.delete(id);
+    }
 }

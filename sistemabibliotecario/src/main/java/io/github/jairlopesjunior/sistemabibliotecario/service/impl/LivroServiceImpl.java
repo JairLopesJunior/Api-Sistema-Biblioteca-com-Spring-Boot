@@ -30,6 +30,16 @@ public class LivroServiceImpl implements LivroService {
         return livroRepository.save(livroConvertido);
     }
 
+    @Override
+    public void delete(Integer id) {
+        livroRepository.findById(id)
+                .map( livroEncontrado -> {
+                    livroRepository.delete(livroEncontrado);
+                    return livroEncontrado;
+                })
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado."));
+    }
+
     private Livro converterLivroDTO(Cliente clienteEncontrado, LivroDTO livroDTO){
         return Livro.builder()
                 .nomeLivro(livroDTO.getNomeLivro())
