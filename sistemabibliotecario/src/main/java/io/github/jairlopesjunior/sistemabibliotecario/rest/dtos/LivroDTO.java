@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -38,5 +39,8 @@ public class LivroDTO {
     @NotNull(message = "Campo página é obrigatório.")
     @ApiModelProperty(name = "as", position = 5, example = "100, 101, 102 ...")
     private Integer pagina;
+
+    @ApiModelProperty(name = "as", position = 6, example = "2021-05-05 ...")
+    private LocalDate anoLivro;
 
 }

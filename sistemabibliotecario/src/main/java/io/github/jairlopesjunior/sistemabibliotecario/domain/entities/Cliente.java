@@ -19,7 +19,8 @@ import java.util.List;
 public class Cliente {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "cli_sequence")
+    @SequenceGenerator(name="cli_sequence", sequenceName= "cli_seq")
     @Column(name = "id")
     private Integer id;
 
