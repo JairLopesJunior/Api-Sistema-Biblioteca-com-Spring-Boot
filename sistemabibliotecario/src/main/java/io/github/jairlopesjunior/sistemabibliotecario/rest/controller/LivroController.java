@@ -23,4 +23,7 @@ public class LivroController {
     public Livro save(@RequestBody @Valid LivroDTO livroDTO){
         return livroService.save(livroDTO);
     }
+
+//    @ResponseStatus(HttpStatus.NO_CONTENT)
+//    @DeleteMapping("{id}")
 }

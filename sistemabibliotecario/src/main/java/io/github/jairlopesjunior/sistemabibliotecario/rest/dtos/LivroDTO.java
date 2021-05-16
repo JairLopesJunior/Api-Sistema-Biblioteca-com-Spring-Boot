@@ -17,30 +17,30 @@ import java.time.LocalDate;
 public class LivroDTO {
 
     @NotNull(message = "Campo id do Cliente é obrigatorio.")
-    @ApiModelProperty(name = "Id do Cliente", position = 0, example = "0, 1, 2, 3 ...")
+    @ApiModelProperty(name = "idCliente", example = "0, 1, 2, 3 ...", value = "Id do Cliente", position = 0)
     private Integer idCliente;
 
     @NotEmpty(message = "Campo nome do livro é obrigatório.")
-    @ApiModelProperty(name = "as", position = 1, example = "Código Limpo, Java Como Programar ...")
+    @ApiModelProperty(name = "nomeLivro", example = "Código Limpo, Java Como Programar ...", value = "Nome do Livro", position = 1)
     private String nomeLivro;
 
     @NotEmpty(message = "Campo autor é obrigatório.")
-    @ApiModelProperty(name = "as", position = 2, example = "Fulano, Cicrano, Beltrano ...")
+    @ApiModelProperty(name = "autor", example = "Fulano, Cicrano, Beltrano ...", value = "Autor", position = 2)
     private String autor;
 
     @NotEmpty(message = "Campo gênero é obrigatório.")
-    @ApiModelProperty(name = "as", position = 3, example = "Romance, Drama ...")
+    @ApiModelProperty(name = "genero", example = "Romance, Drama ...", value = "Gênero", position = 3)
     private String genero;
 
     @NotEmpty(message = "Campo editora é obrigatório.")
-    @ApiModelProperty(name = "as", position = 4, example = "Companhia da Letras, Aleph ...")
+    @ApiModelProperty(name = "editora", example = "Companhia da Letras, Aleph ...", value = "Editora", position = 4)
     private String editora;
 
     @NotNull(message = "Campo página é obrigatório.")
-    @ApiModelProperty(name = "as", position = 5, example = "100, 101, 102 ...")
+    @ApiModelProperty(name = "pagina", example = "100, 101, 102 ...", value = "Página", position = 5)
     private Integer pagina;
 
-    @ApiModelProperty(name = "as", position = 6, example = "2021-05-05 ...")
+    @ApiModelProperty(name = "anoLivro", example = "2021-05-05 ...", value = "Ano do Livro", position = 6)
     private LocalDate anoLivro;
 
 }
