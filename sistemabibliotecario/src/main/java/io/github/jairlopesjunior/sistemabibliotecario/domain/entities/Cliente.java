@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Getter
@@ -26,15 +25,12 @@ public class Cliente {
     private Integer id;
 
     @Column(name = "nome", length = 100, nullable = false)
-    @Size(message = "O nome do usuário não pode ultrapassar {max} caracteres.", max = 100)
     private String nome;
 
     @Column(name = "cpf", length = 11, nullable = false)
-    @Size(message = "O cpf do usuário não pode ultrapassar {max} caracteres.", max = 11)
     private String cpf;
 
     @Column(name = "email", length = 100, nullable = false)
-    @Size(message = "O email do usuário não pode ultrapassar {max} caracteres.", max = 100)
     private String email;
 
     @JsonIgnore
