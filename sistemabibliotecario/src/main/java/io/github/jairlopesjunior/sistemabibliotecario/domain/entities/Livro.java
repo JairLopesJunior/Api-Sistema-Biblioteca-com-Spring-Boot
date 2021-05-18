@@ -4,6 +4,7 @@ import io.github.jairlopesjunior.sistemabibliotecario.domain.enums.StatusPedido;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Getter
@@ -21,22 +22,28 @@ public class Livro {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "nome_livro")
+    @Column(name = "nome_livro", length = 100, nullable = false)
+    @Size(message = "O nome do livro não pode ultrapassar {max} caracteres.", max = 100)
     private String nomeLivro;
 
-    @Column(name = "autor")
+    @Column(name = "autor", length = 100, nullable = false)
+    @Size(message = "O autor do livro não pode ultrapassar {max} caracteres.", max = 100)
     private String autor;
 
-    @Column(name = "ano_livro")
+    @Column(name = "ano_livro", length = 8)
+    @Size(message = "O ano do livro não pode ultrapassar {max} caracteres.", max = 8)
     private LocalDate anoLivro;
 
-    @Column(name = "genero")
+    @Column(name = "genero", length = 100, nullable = false)
+    @Size(message = "O gênero do livro não pode ultrapassar {max} caracteres.", max = 100)
     private String genero;
 
-    @Column(name = "editora")
+    @Column(name = "editora", length = 100, nullable = false)
+    @Size(message = "A editora do livro não pode ultrapassar {max} caracteres.", max = 100)
     private String editora;
 
-    @Column(name = "pagina")
+    @Column(name = "pagina", length = 5, nullable = false)
+    @Size(message = "A página do livro não pode ultrapassar {max} caracteres.", max = 5)
     private Integer pagina;
 
     @Enumerated(EnumType.STRING)
