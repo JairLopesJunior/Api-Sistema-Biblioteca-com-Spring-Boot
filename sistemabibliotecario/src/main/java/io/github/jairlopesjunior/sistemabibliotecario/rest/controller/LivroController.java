@@ -29,4 +29,10 @@ public class LivroController {
     public void delete(@PathVariable Integer id){
         livroService.delete(id);
     }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("{id}")
+    public void update(@RequestBody LivroDTO livroDTO, @PathVariable Integer id){
+        livroService.update(livroDTO, id);
+    }
 }

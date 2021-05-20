@@ -30,8 +30,7 @@ public class Livro {
     @Size(message = "O autor do livro não pode ultrapassar {max} caracteres.", max = 100)
     private String autor;
 
-    @Column(name = "ano_livro", length = 8)
-    @Size(message = "O ano do livro não pode ultrapassar {max} caracteres.", max = 8)
+    @Column(name = "ano_livro")
     private LocalDate anoLivro;
 
     @Column(name = "genero", length = 100, nullable = false)
@@ -43,7 +42,6 @@ public class Livro {
     private String editora;
 
     @Column(name = "pagina", length = 5, nullable = false)
-    @Size(message = "A página do livro não pode ultrapassar {max} caracteres.", max = 5)
     private Integer pagina;
 
     @Enumerated(EnumType.STRING)
