@@ -8,4 +8,6 @@ public interface LivroService {
     Livro save(LivroDTO livroDTO);
 
     void delete(Integer id);
+
+    void update(LivroDTO livroDTO, Integer id);
 }

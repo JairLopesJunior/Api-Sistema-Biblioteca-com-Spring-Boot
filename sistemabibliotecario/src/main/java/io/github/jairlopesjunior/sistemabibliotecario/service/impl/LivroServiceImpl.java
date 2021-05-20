@@ -40,6 +40,15 @@ public class LivroServiceImpl implements LivroService {
                 .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado."));
     }
 
+    @Override
+    public void update(LivroDTO livroDTO, Integer id) {
+        livroRepository.findById(id)
+                .map(livroEncontrado -> {
+                    Livro livroConvertido = converterLivroDTO(livroDTO);
+                    return livroRepository.save(livroConvertido);
+                }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado."));
+    }
+
     private Livro converterLivroDTO(Cliente clienteEncontrado, LivroDTO livroDTO){
         return Livro.builder()
                 .nomeLivro(livroDTO.getNomeLivro())
@@ -50,6 +59,18 @@ public class LivroServiceImpl implements LivroService {
                 .pagina(livroDTO.getPagina())
                 .status(StatusPedido.DISPONIVEL)
                 .cliente(clienteEncontrado)
+                .build();
+    }
+
+    private Livro converterLivroDTO(LivroDTO livroDTO){
+        return Livro.builder()
+                .nomeLivro(livroDTO.getNomeLivro())
+                .autor(livroDTO.getAutor())
+                .anoLivro(LocalDate.now())
+                .genero(livroDTO.getGenero())
+                .editora(livroDTO.getEditora())
+                .pagina(livroDTO.getPagina())
+                .status(StatusPedido.DISPONIVEL)
                 .build();
     }
 }
