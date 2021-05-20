@@ -15,30 +15,30 @@ import java.time.LocalDate;
 public class LivroDTO {
 
     @NotNull(message = "Campo id do Cliente é obrigatorio.")
-    @ApiModelProperty(name = "idCliente", value = "Id do Cliente", example = "0, 1, 2, 3 ...", position = 0)
+    @ApiModelProperty(name = "idCliente", value = "Id do Cliente", example = "1", position = 0)
     private Integer idCliente;
 
     @NotEmpty(message = "Campo nome do livro é obrigatório.")
-    @ApiModelProperty(name = "nomeLivro", value = "Nome do Livro", example = "Código Limpo, Java Como Programar ...", position = 1)
+    @ApiModelProperty(name = "nomeLivro", value = "Nome do Livro", example = "Código Limpo", position = 1)
     private String nomeLivro;
 
     @NotEmpty(message = "Campo autor é obrigatório.")
-    @ApiModelProperty(name = "autor", value = "Autor", example = "Fulano, Cicrano, Beltrano ...", position = 2)
+    @ApiModelProperty(name = "autor", value = "Autor", example = "Robert Cecil Martin", position = 2)
     private String autor;
 
     @NotEmpty(message = "Campo gênero é obrigatório.")
-    @ApiModelProperty(name = "genero", value = "Gênero", example = "Romance, Drama ...", position = 3)
+    @ApiModelProperty(name = "genero", value = "Gênero", example = "Linguagens Informática", position = 3)
     private String genero;
 
     @NotEmpty(message = "Campo editora é obrigatório.")
-    @ApiModelProperty(name = "editora", value = "Editora", example = "Companhia da Letras, Aleph ...", position = 4)
+    @ApiModelProperty(name = "editora", value = "Editora", example = "Alta Books", position = 4)
     private String editora;
 
     @NotNull(message = "Campo página é obrigatório.")
-    @ApiModelProperty(name = "pagina", value = "Página", example = "100, 101, 102 ...", position = 5)
+    @ApiModelProperty(name = "pagina", value = "Página", example = "456", position = 5)
     private Integer pagina;
 
-    @ApiModelProperty(name = "anoLivro", value = "Ano do Livro", example = "2021-05-05 ...", position = 6)
+    @ApiModelProperty(name = "anoLivro", value = "Ano do Livro", example = "2008-08-01", position = 6)
     private LocalDate anoLivro;
 
 }
