@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 
 @Service
@@ -41,10 +42,12 @@ public class LivroServiceImpl implements LivroService {
     }
 
     @Override
+    @Transactional
     public void update(LivroDTO livroDTO, Integer id) {
         livroRepository.findById(id)
                 .map(livroEncontrado -> {
                     Livro livroConvertido = converterLivroDTO(livroDTO);
+                    livroConvertido.setId(livroEncontrado.getId());
                     return livroRepository.save(livroConvertido);
                 }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado."));
     }
