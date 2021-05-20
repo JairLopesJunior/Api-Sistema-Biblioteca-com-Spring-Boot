@@ -2,6 +2,7 @@ package io.github.jairlopesjunior.sistemabibliotecario.rest.controller;
 
 import io.github.jairlopesjunior.sistemabibliotecario.domain.entities.Livro;
 import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.LivroDTO;
+import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.LivroDTOSemId;
 import io.github.jairlopesjunior.sistemabibliotecario.service.LivroService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class LivroController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("{id}")
-    public void update(@RequestBody LivroDTO livroDTO, @PathVariable Integer id){
+    public void update(@RequestBody LivroDTOSemId livroDTO, @PathVariable Integer id){
         livroService.update(livroDTO, id);
     }
 }

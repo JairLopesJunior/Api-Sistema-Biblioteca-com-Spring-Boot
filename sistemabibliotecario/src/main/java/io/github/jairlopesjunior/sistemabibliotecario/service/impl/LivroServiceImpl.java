@@ -6,14 +6,12 @@ import io.github.jairlopesjunior.sistemabibliotecario.domain.enums.StatusPedido;
 import io.github.jairlopesjunior.sistemabibliotecario.domain.repositories.ClienteRepository;
 import io.github.jairlopesjunior.sistemabibliotecario.domain.repositories.LivroRepository;
 import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.LivroDTO;
+import io.github.jairlopesjunior.sistemabibliotecario.rest.dtos.LivroDTOSemId;
 import io.github.jairlopesjunior.sistemabibliotecario.service.LivroService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-import javax.transaction.Transactional;
-import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
@@ -42,12 +40,13 @@ public class LivroServiceImpl implements LivroService {
     }
 
     @Override
-    @Transactional
-    public void update(LivroDTO livroDTO, Integer id) {
+    //@Transactional
+    public void update(LivroDTOSemId livroDTO, Integer id) {
         livroRepository.findById(id)
                 .map(livroEncontrado -> {
                     Livro livroConvertido = converterLivroDTO(livroDTO);
                     livroConvertido.setId(livroEncontrado.getId());
+                    livroConvertido.setCliente(livroEncontrado.getCliente());
                     return livroRepository.save(livroConvertido);
                 }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado."));
     }
@@ -56,7 +55,7 @@ public class LivroServiceImpl implements LivroService {
         return Livro.builder()
                 .nomeLivro(livroDTO.getNomeLivro())
                 .autor(livroDTO.getAutor())
-                .anoLivro(LocalDate.now())
+                .anoLivro(livroDTO.getAnoLivro())
                 .genero(livroDTO.getGenero())
                 .editora(livroDTO.getEditora())
                 .pagina(livroDTO.getPagina())
@@ -65,11 +64,11 @@ public class LivroServiceImpl implements LivroService {
                 .build();
     }
 
-    private Livro converterLivroDTO(LivroDTO livroDTO){
+    private Livro converterLivroDTO(LivroDTOSemId livroDTO){
         return Livro.builder()
                 .nomeLivro(livroDTO.getNomeLivro())
                 .autor(livroDTO.getAutor())
-                .anoLivro(LocalDate.now())
+                .anoLivro(livroDTO.getAnoLivro())
                 .genero(livroDTO.getGenero())
                 .editora(livroDTO.getEditora())
                 .pagina(livroDTO.getPagina())
