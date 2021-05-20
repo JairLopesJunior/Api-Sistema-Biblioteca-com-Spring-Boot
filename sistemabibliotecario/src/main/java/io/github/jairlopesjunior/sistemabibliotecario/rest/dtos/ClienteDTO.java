@@ -17,15 +17,15 @@ public class ClienteDTO {
 
     @NotEmpty(message = "Campo nome é obrigatório.")
     @Size(message = "O nome do usuário não pode ultrapassar {max} caracteres.", max = 100)
-    @ApiModelProperty(name = "nome", value = "Nome do Cliente", example = "Fulano, Cicrano, Beltrano ...", position = 0)
+    @ApiModelProperty(name = "nome", value = "Nome do Cliente", example = "James Gosling", position = 0)
     private String nome;
 
     @CPF(message = "Campo cpf é obrigatório.")
-    @ApiModelProperty(name = "cpf", value = "CPF do Cliente", example = "99999999999 ...", position = 1)
+    @ApiModelProperty(name = "cpf", value = "CPF do Cliente", example = "64736274857", position = 1)
     private String cpf;
 
     @Email(message = "Campo email é obrigatório.")
-    @ApiModelProperty(name = "email", value = "Email do Cliente", example = "joao@gmail.com ...", position = 2)
+    @ApiModelProperty(name = "email", value = "Email do Cliente", example = "james.gosling@sum.com", position = 2)
     private String email;
 
 }
