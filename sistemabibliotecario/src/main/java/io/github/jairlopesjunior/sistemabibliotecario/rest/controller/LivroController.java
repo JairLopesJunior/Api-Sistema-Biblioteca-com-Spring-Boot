@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/livros")
@@ -35,5 +36,11 @@ public class LivroController {
     @PutMapping("{id}")
     public void update(@RequestBody LivroDTOSemId livroDTO, @PathVariable Integer id){
         livroService.update(livroDTO, id);
+    }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @GetMapping
+    public List<Livro> getAll(){
+        return livroService.findAll();
     }
 }

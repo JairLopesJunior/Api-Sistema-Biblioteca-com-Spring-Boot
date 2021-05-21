@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class LivroServiceImpl implements LivroService {
@@ -40,7 +42,6 @@ public class LivroServiceImpl implements LivroService {
     }
 
     @Override
-    //@Transactional
     public void update(LivroDTOSemId livroDTO, Integer id) {
         livroRepository.findById(id)
                 .map(livroEncontrado -> {
@@ -49,6 +50,11 @@ public class LivroServiceImpl implements LivroService {
                     livroConvertido.setCliente(livroEncontrado.getCliente());
                     return livroRepository.save(livroConvertido);
                 }).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado."));
+    }
+
+    @Override
+    public List<Livro> findAll() {
+        return livroRepository.findAll();
     }
 
     private Livro converterLivroDTO(Cliente clienteEncontrado, LivroDTO livroDTO){
