@@ -15,4 +15,6 @@ public interface LivroService {
     void update(LivroDTOSemId livroDTO, Integer id);
 
     List<Livro> findAll();
+
+    Livro findById(Integer id);
 }

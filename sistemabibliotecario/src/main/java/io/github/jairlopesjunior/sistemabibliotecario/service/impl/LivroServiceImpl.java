@@ -57,6 +57,12 @@ public class LivroServiceImpl implements LivroService {
         return livroRepository.findAll();
     }
 
+    @Override
+    public Livro findById(Integer id) {
+        return livroRepository.findById(id)
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Livro não encontrado."));
+    }
+
     private Livro converterLivroDTO(Cliente clienteEncontrado, LivroDTO livroDTO){
         return Livro.builder()
                 .nomeLivro(livroDTO.getNomeLivro())

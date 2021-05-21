@@ -43,4 +43,10 @@ public class LivroController {
     public List<Livro> getAll(){
         return livroService.findAll();
     }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @GetMapping("{id}")
+    public Livro getById(@PathVariable Integer id){
+        return livroService.findById(id);
+    }
 }
