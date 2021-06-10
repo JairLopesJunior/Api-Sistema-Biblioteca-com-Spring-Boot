@@ -19,7 +19,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     //  Realiza a autenticação dos USUARIOS
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        super.configure(auth);
+        auth.inMemoryAuthentication()
+                .passwordEncoder(passwordEncoder())
+                .withUser("fulano")
+                .password(passwordEncoder().encode("123"))
+                .roles("USER");
     }
 
     // Realiza a autorização dos USUARIOS
