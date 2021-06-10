@@ -22,13 +22,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder())
                 .withUser("fulano")
-                .password(passwordEncoder().encode("123"))
+                .password(passwordEncoder().encode("1234"))
                 .roles("USER");
     }
 
     // Realiza a autorização dos USUARIOS
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+        http
+            .csrf().disable()
+            .authorizeRequests()
+                .antMatchers("/**")
+                .authenticated()
+        .and()
+            .formLogin();
     }
 }
